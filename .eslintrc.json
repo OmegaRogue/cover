@@ -6,12 +6,15 @@
 	},
 	"extends": [
 		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
 		"plugin:import/errors",
+		"plugin:import/typescript",
 		"prettier"
 	],
 	"parserOptions": {
 		"ecmaVersion": 2022,
-		"sourceType": "module"
+		"sourceType": "module",
+		"project": "./tsconfig.json"
 	},
 	"ignorePatterns": ["dist/", "types/"],
 	"rules": {
@@ -39,7 +42,7 @@
 			{
 				"allowForLoopAfterthoughts": true
 			}
-		]
+		],
 		//		"import/no-unresolved": [
 		//			"error",
 		//			{
@@ -49,16 +52,55 @@
 		//			}
 		//		],
 		//		"spaced-comment": "error",
+		"@typescript-eslint/await-thenable": "error",
+		"@typescript-eslint/ban-ts-comment": "off",
+		//Just, nope. Not worth it.
+		"@typescript-eslint/ban-types": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/no-unsafe-declaration-merging": "off",
+		//TODO Handle later
+		"@typescript-eslint/lines-between-class-members": [
+			"error",
+			"always",
+			{
+				"exceptAfterSingleLine": true
+			}
+		],
+		"@typescript-eslint/prefer-namespace-keyword": "off",
+		"@typescript-eslint/no-namespace": [
+			"error",
+			{
+				"allowDeclarations": true
+			}
+		],
+		"@typescript-eslint/no-empty-function": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		// TODO Handle this later
+		"@typescript-eslint/no-non-null-assertion": "off",
+		"@typescript-eslint/no-unused-vars": "off",
+		"@typescript-eslint/array-type": [
+			"error",
+			{
+				"default": "array"
+			}
+		],
+		"@typescript-eslint/explicit-member-accessibility": "off"
 	},
 	"settings": {
 		"import/resolver": {
 			"node": {
 				"paths": ["src", "types", "", "dist"],
 				"extensions": [".css", ".js", ".json", ".jsx", ".scss", ".ts", ".tsx"]
-			}
+			},
+			"eslint-import-resolver-typescript": true,
+			"typescript": true
+		},
+		"import/parsers": {
+			"@typescript-eslint/parser": [".ts"]
 		}
 	},
-	"plugins": ["prettier", "import"]
+	"plugins": ["prettier", "@typescript-eslint", "import"],
+	"parser": "@typescript-eslint/parser"
 	//	"overrides": [
 	//		{
 	//			"files": ["types/types/foundry/**/*", "types/src/**/*"],

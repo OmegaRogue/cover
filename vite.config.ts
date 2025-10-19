@@ -1,6 +1,7 @@
 import fs from "fs-extra";
 import * as Vite from "vite";
 // import { LightningCSSOptions } from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 // eslint-disable-next-line import/default
 import checker from "vite-plugin-checker";
 import path from "path";
@@ -9,12 +10,13 @@ import esbuild from "esbuild";
 
 // import { LengthValue, TransformOptions } from "lightningcss";
 
-const config = Vite.defineConfig(({ command, mode }) => {
+const config = Vite.defineConfig(({ command, mode }): Vite.UserConfig => {
 	const buildMode = mode === "production" ? "production" : "development";
 	const outDir = "dist";
 
 	const plugins = [
-		checker({}),
+		checker({ typescript: true }),
+		tsconfigPaths(),
 	];
 	// Handle minification after build to allow for tree-shaking and whitespace minification
 	// "Note the build.minify option does not minify whitespaces when using the 'es' format in lib mode, as it removes
@@ -123,8 +125,8 @@ const config = Vite.defineConfig(({ command, mode }) => {
 			},
 			rollupOptions: {
 				output: {
-					assetFileNames: ({ name }) =>
-						name === "style.css" ? "styles/cover.css" : name,
+					assetFileNames: ({ name }): string =>
+						name === "style.css" ? "styles/cover.css" : name!,
 					chunkFileNames: "[name].mjs",
 					entryFileNames: "cover.mjs",
 					manualChunks: {
