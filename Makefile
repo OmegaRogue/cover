@@ -24,8 +24,6 @@ install:
 	done
 lint:
 	yarn lint
-lint_ts:
-	yarn lint:ts
 lint_json:
 	yarn lint:json
 lint_fix:
@@ -33,6 +31,3 @@ lint_fix:
 
 android_debug:
 	adb forward tcp:9222 localabstract:chrome_devtools_remote
-
-
-include types/Makefile
