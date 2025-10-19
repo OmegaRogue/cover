@@ -37,7 +37,6 @@
     "eslint-plugin-json": "^4.0.0",
     "eslint-plugin-prettier": "^5.5.4",
     "esno": "^4.0.0",
-    "fs-extra": "^11.2.0",
     "gitmoji-cli": "^9.1.0",
     "gsap": "3.12.5",
     "handlebars": "4.7.8",
