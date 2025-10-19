@@ -14,8 +14,7 @@ const config = Vite.defineConfig(({ command, mode }) => {
 	const outDir = "dist";
 
 	const plugins = [
-		checker({ typescript: true }),
-		tsconfigPaths(),
+		checker({}),
 	];
 	// Handle minification after build to allow for tree-shaking and whitespace minification
 	// "Note the build.minify option does not minify whitespaces when using the 'es' format in lib mode, as it removes

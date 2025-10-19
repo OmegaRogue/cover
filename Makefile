@@ -20,7 +20,7 @@ hot:
 install:
 	for f in ${DATA_PATH}
 	do
-		ln -s $$(pwd)/dist "$$f/modules/mobile-sheet"
+		ln -s $$(pwd)/dist "$$f/modules/cover"
 	done
 lint:
 	yarn lint
