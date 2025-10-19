@@ -1,0 +1,71 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true,
+		"jquery": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:import/errors",
+		"prettier"
+	],
+	"parserOptions": {
+		"ecmaVersion": 2022,
+		"sourceType": "module"
+	},
+	"ignorePatterns": ["dist/", "types/"],
+	"rules": {
+		"indent": ["warn", "tab", { "SwitchCase": 1 }],
+		"eqeqeq": ["error", "always"],
+		"import/named": "off",
+		//		"import/no-default-export": "error",
+		"prettier/prettier": "error",
+		"no-console": "off",
+		"no-unused-expressions": [
+			"error",
+			{
+				"allowShortCircuit": true
+			}
+		],
+		"spaced-comment": [
+			"error",
+			"always",
+			{
+				"markers": ["/"]
+			}
+		],
+		"no-plusplus": [
+			"error",
+			{
+				"allowForLoopAfterthoughts": true
+			}
+		]
+		//		"import/no-unresolved": [
+		//			"error",
+		//			{
+		//				"ignore": [
+		//					"foundryvtt-devMode"
+		//				]
+		//			}
+		//		],
+		//		"spaced-comment": "error",
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"paths": ["src", "types", "", "dist"],
+				"extensions": [".css", ".js", ".json", ".jsx", ".scss", ".ts", ".tsx"]
+			}
+		}
+	},
+	"plugins": ["prettier", "import"]
+	//	"overrides": [
+	//		{
+	//			"files": ["types/types/foundry/**/*", "types/src/**/*"],
+	//			"rules": {
+	//				"indent": "off",
+	//				"prettier/prettier": "off"
+	//			}
+	//		}
+	//	]
+}
