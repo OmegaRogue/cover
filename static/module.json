@@ -27,7 +27,7 @@
 			"lang": "en",
 			"name": "English",
 			"path": "lang/en.json"
-		},
+		}
 	],
 	"relationships": {
 		"systems": [],
