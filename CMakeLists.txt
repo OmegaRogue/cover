@@ -25,6 +25,23 @@ set(DAS_SOUND_DISABLED YES)
 # set(DAS_BUILD_TOOLS NO) # <--- need to build tools to support AOT generation build step in daScript modules
 set(DAS_CONFIG_INCLUDE_DIR "src")
 
+
+add_compile_options(-msimd128)
+add_compile_options(-msse2)
+add_compile_options(-mnontrapping-fptoint)
+
+add_compile_options(-fwasm-exceptions)
+add_link_options(-fwasm-exceptions)
+
+add_compile_definitions(DAS_ENABLE_EXCEPTIONS)
+add_compile_definitions(_EMSCRIPTEN_VER)
+
+set(CMAKE_CXX_FLAGS "-s TOTAL_MEMORY=128MB")
+
+INCLUDE(3rdparty/daScript/CMakeCommon.txt)
+
+SETUP_COMPILER()
+
 add_subdirectory(3rdparty/daScript)
 
 

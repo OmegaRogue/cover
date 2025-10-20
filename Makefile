@@ -12,6 +12,17 @@ buildDa:
 	mkdir -p build && cd build
 	cmake -G Ninja .. -DCMAKE_BUILD_TYPE=RelWithDebInfo
 	cmake --build . -j16 --target daslang --config RelWithDebInfo
+
+buildWasm:
+	#cp 3rdparty/daScript/CMakeXxdImpl.txt .
+	#sudo emsdk activate latest
+	source "/usr/lib/emsdk/emsdk_env.sh"
+	rm -rf cmake_temp
+	mkdir cmake_temp
+	cd cmake_temp
+	cmake -DCMAKE_BUILD_TYPE=Debug -G Ninja -DCMAKE_TOOLCHAIN_FILE=/usr/lib/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake ../
+	ninja -j16
+
 deps:
 	yarn install
 build_dev:
