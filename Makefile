@@ -21,8 +21,11 @@ buildWasm:
 	mkdir cmake_temp
 	cd cmake_temp
 	cmake -DCMAKE_BUILD_TYPE=Debug -G Ninja -DCMAKE_TOOLCHAIN_FILE=/usr/lib/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake ../
-	ninja -j16
-
+	ninja -j16 cover
+	cd ..
+	mv bin/cover.js bin/cover.cjs
+runWasm:
+	node bin/cover.cjs
 deps:
 	yarn install
 build_dev:

@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "daScript/daScript.h"
 using namespace das;
 
@@ -10,7 +8,6 @@ void tutorial () {
     ModuleGroup dummyLibGroup;                      // module group for compiled program
     auto fAccess = make_smart<FsFileAccess>();      // default file access
     // compile program
-	std::cout << getDasRoot() + TUTORIAL_NAME << std::endl;
     auto program = compileDaScript(getDasRoot() + TUTORIAL_NAME, fAccess, tout, dummyLibGroup);
     if ( program->failed() ) {
         // if compilation failed, report errors
@@ -52,7 +49,7 @@ void tutorial () {
 
 int main( int, char * [] ) {
     // request all da-script built in modules
-    NEED_ALL_DEFAULT_MODULES;
+	NEED_MODULE(Module_BuiltIn);
     // Initialize modules
     Module::Initialize();
     // run the tutorial
