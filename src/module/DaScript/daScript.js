@@ -118,9 +118,9 @@ if (ENVIRONMENT_IS_NODE) {
 	}
 } else {
 }
-var out = console.log.bind(console);
+var out = console.log.bind(console, "daslang |");
 
-var err = console.error.bind(console);
+var err = console.error.bind(console, "daslang |");
 
 var wasmBinary;
 
@@ -130,9 +130,26 @@ var EXITSTATUS;
 
 var isFileURI = filename => filename.startsWith("file://");
 
-var HEAP8, HEAPU8, HEAP16, HEAPU16, HEAP32, HEAPU32, HEAPF32, HEAPF64;
-
-var HEAP64, HEAPU64;
+/** @type Int8Array */
+export var HEAP8;
+/** @type Uint8Array */
+export var HEAPU8;
+/** @type Int16Array */
+export var HEAP16;
+/** @type Uint16Array */
+export var HEAPU16;
+/** @type Int32Array */
+export var HEAP32;
+/** @type Uint32Array */
+export var HEAPU32;
+/** @type Float32Array */
+export var HEAPF32;
+/** @type Float64Array */
+export var HEAPF64;
+/** @type BigInt64Array */
+export var HEAP64;
+/** @type BigUint64Array */
+export var HEAPU64;
 
 var runtimeInitialized = false;
 
@@ -270,7 +287,7 @@ async function instantiateAsync(binary, binaryFile, imports) {
 }
 
 function getWasmImports() {
-	var imports = {a: wasmImports};
+	var imports = {a: wasmImports, js: { mem: SharedMemory}};
 
 	return imports
 }
@@ -4795,6 +4812,11 @@ var _emscripten_resize_heap = requestedSize => {
 };
 
 var ENV = {};
+export const SharedMemory = new WebAssembly.Memory({
+	initial: 10,
+	maximum: 1000,
+	shared: true,
+});
 
 var getExecutableName = () => thisProgram || "./this.program";
 
@@ -5055,7 +5077,7 @@ FS.staticInit();
 		}
 	}
 }
-var _main, _htons, _emscripten_builtin_memalign, _ntohs, ___trap, __emscripten_stack_alloc, memory,
+export var _main, _htons, _emscripten_builtin_memalign, _ntohs, ___trap, __emscripten_stack_alloc, memory,
 	__indirect_function_table, wasmMemory, wasmTable;
 
 function assignWasmExports(wasmExports) {

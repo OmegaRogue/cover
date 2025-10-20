@@ -1,0 +1,3 @@
+[submodule "3rdparty/daScript"]
+	path = 3rdparty/daScript
+	url = https://github.com/GaijinEntertainment/daScript.git

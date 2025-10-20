@@ -7,6 +7,11 @@ PF2E_REPO_PATH := $(shell node -e 'console.log(JSON.parse(require("fs").readFile
 
 build:
 	yarn build
+buildDa:
+	cd 3rdparty/daScript
+	mkdir -p build && cd build
+	cmake -G Ninja .. -DCMAKE_BUILD_TYPE=RelWithDebInfo
+	cmake --build . -j16 --target daslang --config RelWithDebInfo
 deps:
 	yarn install
 build_dev:
