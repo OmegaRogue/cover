@@ -238,7 +238,7 @@ function abort(what) {
 var wasmBinaryFile;
 
 function findWasmBinary() {
-	return "modules/cover/daScript.wasm"
+	return "static/daScript.wasm"
 }
 
 function getBinarySync(file) {
@@ -252,7 +252,7 @@ function getBinarySync(file) {
 }
 
 async function getWasmBinary(binaryFile) {
-	return await (await fetch("modules/cover/daScript.wasm")).bytes()
+	return await (await fetch("static/daScript.wasm")).bytes()
 }
 
 async function instantiateArrayBuffer(binaryFile, imports) {
@@ -822,7 +822,7 @@ export var TTY = {
 		}, put_char(tty, val) {
 			if (val === null || val === 10) {
 				out(UTF8ArrayToString(tty.output));
-
+				document.getElementById("OUT").innerHTML = UTF8ArrayToString(tty.output);
 				tty.output = []
 			} else {
 				if (val != 0) tty.output.push(val)

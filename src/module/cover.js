@@ -1,4 +1,4 @@
-import "styles/cover.scss";
+//import "../styles/cover.scss";
 //import * as fs from 'node:fs';
 // import * as fs from 'FS';
 import * as das from "./DaScript/daScript.js";
@@ -18,7 +18,7 @@ import {FS} from "./DaScript/daScript.js";
 //console.log("test", das.wasmExports);
 
 
-FS.writeFile('main.das',await (await fetch("modules/cover/test.das")).text());
+FS.writeFile('main.das',await (await fetch("static/test.das")).text());
 
 console.log(das.wasmExports.Q.length)
 das.HEAP8[0] = 69;
